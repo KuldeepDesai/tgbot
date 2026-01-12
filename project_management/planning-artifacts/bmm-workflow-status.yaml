@@ -22,7 +22,7 @@ selected_track: "method"
 field_type: "greenfield"
 workflow_path: "_bmad/bmm/workflows/workflow-status/paths/method-greenfield.yaml"
 workflow_status:
-  brainstorm-project: skipped
+  brainstorm-project: "project_management/analysis/brainstorming-session-2026-01-12.md"
   research: skipped
   product-brief: "project_management/planning-artifacts/product-brief-tgbot-2026-01-12.md"
   prd: required
