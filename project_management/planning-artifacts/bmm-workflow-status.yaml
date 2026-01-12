@@ -28,7 +28,7 @@ workflow_status:
   product-brief: "project_management/planning-artifacts/product-brief-tgbot-2026-01-12.md"
   prd: "project_management/planning-artifacts/prd.md"
   create-ux-design: conditional
-  create-architecture: required
+  create-architecture: "project_management/planning-artifacts/architecture.md"
   create-epics-and-stories: required
   test-design: optional
   implementation-readiness: required
