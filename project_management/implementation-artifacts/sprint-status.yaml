@@ -1,0 +1,80 @@
+# generated: 2026-01-12
+# project: tgbot
+# project_key: tgbot
+# tracking_system: file-system
+# story_location: project_management/implementation-artifacts
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog → in-progress: Automatically when first story is created (via create-story)
+#   - in-progress → done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories can be worked in parallel if team capacity allows
+# - SM typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+
+generated: 2026-01-12
+project: tgbot
+project_key: tgbot
+tracking_system: file-system
+story_location: project_management/implementation-artifacts
+
+development_status:
+  epic-1: backlog
+  1-1-set-up-initial-project-from-the-selected-starter-template: backlog
+  1-2-register-a-channel-ops-cli-with-per-channel-disclaimer: backlog
+  1-3-help-returns-usage-instructions-channel-disclaimer-threaded: backlog
+  1-4-resolve-incoming-updates-to-a-known-channel-record: backlog
+  1-5-create-minimal-persistence-for-channels-and-audit-events: backlog
+  epic-1-retrospective: optional
+  epic-2: backlog
+  2-1-normalize-telegram-updates-into-a-versioned-event-envelope-and-enqueue-them-durably: backlog
+  2-2-consolidate-queued-envelopes-into-immutable-raw-lake-jsonl-windows-manifest: backlog
+  2-3-process-lake-window-files-into-latest-message-state-with-edits-and-tombstones: backlog
+  2-4-implement-userbot-based-historical-backfill-and-cursoring: backlog
+  2-5-ensure-retention-policy-and-manual-deletion-posture-are-documented-and-enforced: backlog
+  epic-2-retrospective: optional
+  epic-3: backlog
+  3-1-detect-questions-bot-mention-reply-to-bot-and-ignore-other-messages: backlog
+  3-2-send-typing-immediately-and-reply-in-thread-with-a-safe-fallback-on-failure: backlog
+  3-3-enforce-strict-channel-scoped-retrieval-no-cross-channel-leakage: backlog
+  3-4-retrieve-rank-and-return-top-3-distinct-recommendations-with-citations-and-dates: backlog
+  3-5-always-include-the-cutoff-timestamp-line-ist-in-answers: backlog
+  3-6-extract-and-display-contact-details-only-when-present-in-evidence: backlog
+  3-7-format-answers-in-telegram-markdownv2-safely: backlog
+  3-8-handle-conflicting-recommendations-neutrally-with-evidence: backlog
+  epic-3-retrospective: optional
+  epic-4: backlog
+  4-1-enforce-per-channel-daily-question-quota-with-ist-midnight-reset: backlog
+  4-2-provide-more-recommendations-button-that-paginates-3-up-to-12-distinct: backlog
+  epic-4-retrospective: optional
+  epic-5: backlog
+  5-1-query-safety-gate-refuse-flagged-queries-with-a-supportive-response: backlog
+  5-2-quarantine-unsafe-ingested-content-and-hard-filter-it-from-answering: backlog
+  5-3-capture-feedback-on-bot-answers: backlog
+  epic-5-retrospective: optional
+  epic-6: backlog
+  6-1-detect-bot-removal-permission-changes-and-emit-audit-events: backlog
+  6-2-ops-cli-to-send-a-message-to-one-channel-or-broadcast-to-all-channels: backlog
+  6-3-internal-only-http-endpoint-for-ops-messaging: backlog
+  epic-6-retrospective: optional

@@ -2,6 +2,7 @@
 
 <critical>The workflow execution engine is governed by: {project-root}/_bmad/core/tasks/workflow.xml</critical>
 <critical>You MUST have already loaded and processed: {project-root}/_bmad/bmm/workflows/4-implementation/sprint-planning/workflow.yaml</critical>
+<critical>This workflow defaults to YOLO execution via workflow.yaml `runner_mode: yolo` (skips confirmations / runs non-interactively)</critical>
 
 ## 📚 Document Discovery - Full Epic Loading
 

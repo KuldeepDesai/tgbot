@@ -14,6 +14,7 @@
     <rule n="2">Optional steps: Ask user unless #yolo mode active</rule>
     <rule n="3">Template-output tags: Save content, discuss with the user the section completed, and NEVER proceed until the users indicates
       to proceed (unless YOLO mode has been activated)</rule>
+    <rule n="4">If workflow.yaml sets runner_mode: yolo, start in #yolo mode unless the user explicitly asks for interactive mode</rule>
   </WORKFLOW-RULES>
 
   <flow>
@@ -24,7 +25,8 @@
         <phase n="1">Load external config from config_source path</phase>
         <phase n="2">Resolve all {config_source}: references with values from config</phase>
         <phase n="3">Resolve system variables (date:system-generated) and paths ({project-root}, {installed_path})</phase>
-        <phase n="4">Ask user for input of any variables that are still unknown</phase>
+        <phase n="4">If workflow.yaml contains runner_mode: yolo, enter #yolo mode now (unless user explicitly requests interactive)</phase>
+        <phase n="5">Ask user for input of any variables that are still unknown</phase>
       </substep>
 
       <substep n="1b" title="Load Required Components">
