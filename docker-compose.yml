@@ -1,0 +1,102 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: tgbot
+      POSTGRES_USER: tgbot
+      POSTGRES_PASSWORD: tgbot
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  migrate:
+    build: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg://tgbot:tgbot@postgres:5432/tgbot
+    command: ["alembic", "upgrade", "head"]
+
+  receiver:
+    build: .
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://tgbot:tgbot@postgres:5432/tgbot
+      TG_OBJECT_STORE: local
+      TG_QUEUE: local
+      TG_LOCAL_LAKE_DIR: /data/lake
+      TG_LOCAL_QUEUE_DIR: /data/queue
+    volumes:
+      - ./.:/app:ro
+      - local_lake:/data/lake
+      - local_queue:/data/queue
+    command: ["python", "-m", "tgbot.main.receiver"]
+
+  consolidator:
+    build: .
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://tgbot:tgbot@postgres:5432/tgbot
+      TG_OBJECT_STORE: local
+      TG_QUEUE: local
+      TG_LOCAL_LAKE_DIR: /data/lake
+      TG_LOCAL_QUEUE_DIR: /data/queue
+    volumes:
+      - ./.:/app:ro
+      - local_lake:/data/lake
+      - local_queue:/data/queue
+    command: ["python", "-m", "tgbot.main.consolidator"]
+
+  worker:
+    build: .
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://tgbot:tgbot@postgres:5432/tgbot
+      TG_OBJECT_STORE: local
+      TG_QUEUE: local
+      TG_LOCAL_LAKE_DIR: /data/lake
+      TG_LOCAL_QUEUE_DIR: /data/queue
+    volumes:
+      - ./.:/app:ro
+      - local_lake:/data/lake
+      - local_queue:/data/queue
+    command: ["python", "-m", "tgbot.main.worker"]
+
+  ops_api:
+    build: .
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://tgbot:tgbot@postgres:5432/tgbot
+      OPS_API_BIND: 0.0.0.0
+      OPS_API_PORT: 8080
+    ports:
+      - "8080:8080"
+    command: ["python", "-m", "tgbot.main.ops_api"]
+
+volumes:
+  pg_data:
+  local_lake:
+  local_queue:
