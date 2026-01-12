@@ -16,6 +16,7 @@
 #   - skipped: Optional/conditional workflow that was skipped
 
 generated: "2026-01-12"
+last_updated: "2026-01-12T12:42:44Z"
 project: "Ask Imperia Bot"
 project_type: "api_backend"
 selected_track: "method"
@@ -25,7 +26,7 @@ workflow_status:
   brainstorm-project: "project_management/analysis/brainstorming-session-2026-01-12.md"
   research: "project_management/planning-artifacts/research/technical-telegram-ingestion-pipeline-research-2026-01-12.md"
   product-brief: "project_management/planning-artifacts/product-brief-tgbot-2026-01-12.md"
-  prd: required
+  prd: "project_management/planning-artifacts/prd.md"
   create-ux-design: conditional
   create-architecture: required
   create-epics-and-stories: required
