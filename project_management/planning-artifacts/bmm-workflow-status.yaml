@@ -29,7 +29,7 @@ workflow_status:
   prd: "project_management/planning-artifacts/prd.md"
   create-ux-design: conditional
   create-architecture: "project_management/planning-artifacts/architecture.md"
-  create-epics-and-stories: required
+  create-epics-and-stories: "project_management/planning-artifacts/epics.md"
   test-design: optional
   implementation-readiness: required
   sprint-planning: required
