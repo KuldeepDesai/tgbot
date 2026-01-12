@@ -489,6 +489,11 @@ So that I can act quickly with confidence.
 **When** the system processes it
 **Then** it retrieves relevant content for that channel and returns 3 distinct recommendations when applicable.
 
+**Given** multiple evidence messages refer to the same underlying electrician (same provider)
+**When** the system forms the Top 3 list
+**Then** that electrician appears at most once in the results (deduplicated)
+**And** the remaining items (if available) are different electricians.
+
 **Given** a recommendation is presented
 **When** the bot formats the answer
 **Then** each item includes citations (Telegram message link when possible; fallback citation otherwise) and message dates.
@@ -596,6 +601,16 @@ So that I can explore additional options without re-asking.
 **When** the user clicks “More recommendations”
 **Then** the bot returns the next 3 distinct recommendations as a threaded reply/update
 **And** this can continue up to 12 distinct total for the same question context.
+
+**Given** the system only has N distinct electricians worth recommending for the question (e.g., N=5)
+**When** the user clicks “More recommendations” enough times to exhaust the remaining distinct electricians
+**Then** the bot does not show (or removes) the “More recommendations” button on subsequent responses
+**And** it does not return duplicate electricians already shown in earlier pages.
+
+**Given** a user clicks “More recommendations” multiple times for the same question context (including Telegram retry/double-delivery scenarios)
+**When** the callback handler is invoked with the same pagination cursor/context
+**Then** the pagination is idempotent: the user sees the same “next 3” set for that cursor
+**And** no duplicates are emitted across pages for that question context.
 
 **Given** “More recommendations” results are returned
 **When** they are formatted

@@ -16,7 +16,7 @@
 #   - skipped: Optional/conditional workflow that was skipped
 
 generated: "2026-01-12"
-last_updated: "2026-01-12T12:42:44Z"
+last_updated: "2026-01-12T14:15:15Z"
 project: "Ask Imperia Bot"
 project_type: "api_backend"
 selected_track: "method"
@@ -31,5 +31,5 @@ workflow_status:
   create-architecture: "project_management/planning-artifacts/architecture.md"
   create-epics-and-stories: "project_management/planning-artifacts/epics.md"
   test-design: optional
-  implementation-readiness: required
+  implementation-readiness: "project_management/planning-artifacts/implementation-readiness-report-2026-01-12.md"
   sprint-planning: required
