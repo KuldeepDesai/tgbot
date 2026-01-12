@@ -23,7 +23,7 @@ field_type: "greenfield"
 workflow_path: "_bmad/bmm/workflows/workflow-status/paths/method-greenfield.yaml"
 workflow_status:
   brainstorm-project: "project_management/analysis/brainstorming-session-2026-01-12.md"
-  research: skipped
+  research: "project_management/planning-artifacts/research/technical-telegram-ingestion-pipeline-research-2026-01-12.md"
   product-brief: "project_management/planning-artifacts/product-brief-tgbot-2026-01-12.md"
   prd: required
   create-ux-design: conditional
