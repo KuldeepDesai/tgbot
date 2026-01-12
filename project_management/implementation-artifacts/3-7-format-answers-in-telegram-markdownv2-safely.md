@@ -37,7 +37,7 @@ so that the content is readable and trustworthy.
 ## Dev Notes
 
 - **Sources**:
-  - Planning story: `/Users/Kuldeep_Desai/workspace/exp/tgbot/project_management/planning-artifacts/stories/epic-03/story-03-07-format-answers-in-telegram-markdownv2-safely.md`
+  - Planning story: `project_management/planning-artifacts/stories/epic-03/story-03-07-format-answers-in-telegram-markdownv2-safely.md`
   - Epics: `project_management/planning-artifacts/epics.md`
   - Architecture: `project_management/planning-artifacts/architecture.md`
 - **Cross-cutting guardrails (from architecture/epics)**:
@@ -56,7 +56,7 @@ so that the content is readable and trustworthy.
 
 ### Agent Model Used
 
-{{agent_model_name_version}}
+N/A (bulk create-story; model not recorded)
 
 ### Debug Log References
 
@@ -64,10 +64,41 @@ so that the content is readable and trustworthy.
 
 ### File List
 
+- `src/tgbot/telegram/markdown_v2.py`
+- `tests/unit/test_markdown_v2.py`
+- `src/tgbot/telegram/handlers/query.py`
+- `src/tgbot/telegram/updates/receiver_polling.py`
+- `src/tgbot/telegram/ui/answer_format.py`
+- `src/tgbot/storage/repos/answers_repo.py`
+- `src/tgbot/ops/cli/main.py`
+- `migrations/versions/0001_initial_schema.py`
+- `src/tgbot/telegram/handlers/help.py`
+- `src/tgbot/safety/query_gate.py`
+- `src/tgbot/ops/api/routes/broadcast.py`
+- `src/tgbot/safety/message_classifier.py`
+- `src/tgbot/storage/repos/messages_repo.py`
+- `src/tgbot/worker/file_processor.py`
+- `src/tgbot/query/recommendations.py`
 ## Change Log
 
 - 2026-01-12: Created implementation story file from planning artifacts (bulk yolo create-story).
+- 2026-01-12: Story hygiene pass (normalized planning-story paths, filled agent-model placeholder, removed redundant bottom status block).
 
-## Status
+## Senior Developer Review (AI)
 
-done
+_Reviewer: AI on 2026-01-12_
+
+### Synthetic File List Basis
+
+- Git diff is empty; the File List below was generated from a deterministic static keyword scan plus known module/story mappings.
+
+### Findings
+
+- **HIGH**: Story is `Status: done` but Tasks/Subtasks are all unchecked; status likely overstates completion and makes audits unreliable.
+- **MEDIUM**: No git diff/commit context available; this review is based on static inspection and may miss what actually changed per story.
+- **MEDIUM**: Dev Agent Record has no completion notes, debug refs, or rationale tying code to each Acceptance Criterion.
+
+### Outcome
+
+Changes Requested
+

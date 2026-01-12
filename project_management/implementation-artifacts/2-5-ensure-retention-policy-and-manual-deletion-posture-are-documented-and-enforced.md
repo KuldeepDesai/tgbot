@@ -37,7 +37,7 @@ so that the MVP meets retention requirements without complex in-product deletion
 ## Dev Notes
 
 - **Sources**:
-  - Planning story: `/Users/Kuldeep_Desai/workspace/exp/tgbot/project_management/planning-artifacts/stories/epic-02/story-02-05-ensure-retention-policy-and-manual-deletion-posture-are-documented-and-enforced.md`
+  - Planning story: `project_management/planning-artifacts/stories/epic-02/story-02-05-ensure-retention-policy-and-manual-deletion-posture-are-documented-and-enforced.md`
   - Epics: `project_management/planning-artifacts/epics.md`
   - Architecture: `project_management/planning-artifacts/architecture.md`
 - **Cross-cutting guardrails (from architecture/epics)**:
@@ -56,7 +56,7 @@ so that the MVP meets retention requirements without complex in-product deletion
 
 ### Agent Model Used
 
-{{agent_model_name_version}}
+N/A (bulk create-story; model not recorded)
 
 ### Debug Log References
 
@@ -64,10 +64,42 @@ so that the MVP meets retention requirements without complex in-product deletion
 
 ### File List
 
+- `docs/retention_and_deletion.md`
+- `src/tgbot/ingestion/consolidator/consolidate_to_lake.py`
+- `src/tgbot/worker/file_processor.py`
+- `src/tgbot/lake/manifest.py`
+- `src/tgbot/storage/repos/messages_repo.py`
+- `src/tgbot/telegram/handlers/query.py`
+- `src/tgbot/telegram/updates/receiver_polling.py`
+- `src/tgbot/query/recommendations.py`
+- `src/tgbot/query/service.py`
+- `src/tgbot/userbot/backfill.py`
+- `src/tgbot/lake/paths.py`
+- `src/tgbot/logging/logger.py`
+- `src/tgbot/ops/cli/main.py`
+- `tests/unit/test_channel_isolation_filters.py`
+- `migrations/versions/0001_initial_schema.py`
 ## Change Log
 
 - 2026-01-12: Created implementation story file from planning artifacts (bulk yolo create-story).
+- 2026-01-12: Story hygiene pass (normalized planning-story paths, filled agent-model placeholder, removed redundant bottom status block).
 
-## Status
+## Senior Developer Review (AI)
 
-done
+_Reviewer: AI on 2026-01-12_
+
+### Synthetic File List Basis
+
+- Git diff is empty; the File List below was generated from a deterministic static keyword scan plus known module/story mappings.
+
+### Findings
+
+- **HIGH**: Story is `Status: done` but Tasks/Subtasks are all unchecked; status likely overstates completion and makes audits unreliable.
+- **MEDIUM**: No git diff/commit context available; this review is based on static inspection and may miss what actually changed per story.
+- **MEDIUM**: Dev Agent Record has no completion notes, debug refs, or rationale tying code to each Acceptance Criterion.
+- **MEDIUM**: Story is largely documentation-driven; ensure the runbook is referenced from README/ops docs and that any deletion steps match actual storage adapters in use.
+
+### Outcome
+
+Changes Requested
+

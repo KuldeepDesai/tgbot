@@ -54,7 +54,7 @@ so that downstream processing is replayable and idempotent.
 ## Dev Notes
 
 - **Sources**:
-  - Planning story: `/Users/Kuldeep_Desai/workspace/exp/tgbot/project_management/planning-artifacts/stories/epic-02/story-02-01-normalize-telegram-updates-into-a-versioned-event-envelope-and-enqueue-them-durably.md`
+  - Planning story: `project_management/planning-artifacts/stories/epic-02/story-02-01-normalize-telegram-updates-into-a-versioned-event-envelope-and-enqueue-them-durably.md`
   - Epics: `project_management/planning-artifacts/epics.md`
   - Architecture: `project_management/planning-artifacts/architecture.md`
 - **Cross-cutting guardrails (from architecture/epics)**:
@@ -73,7 +73,7 @@ so that downstream processing is replayable and idempotent.
 
 ### Agent Model Used
 
-{{agent_model_name_version}}
+N/A (bulk create-story; model not recorded)
 
 ### Debug Log References
 
@@ -81,10 +81,41 @@ so that downstream processing is replayable and idempotent.
 
 ### File List
 
+- `src/tgbot/telegram/updates/normalization.py`
+- `src/tgbot/ingestion/schema/event_envelope.py`
+- `src/tgbot/ingestion/queue/interface.py`
+- `src/tgbot/ingestion/queue/factory.py`
+- `tests/unit/test_event_envelope_schema.py`
+- `src/tgbot/telegram/updates/receiver_polling.py`
+- `src/tgbot/userbot/backfill.py`
+- `src/tgbot/worker/file_processor.py`
+- `migrations/versions/0001_initial_schema.py`
+- `src/tgbot/ops/cli/main.py`
+- `src/tgbot/telegram/handlers/query.py`
+- `src/tgbot/ingestion/consolidator/consolidate_to_lake.py`
+- `src/tgbot/storage/repos/channels_repo.py`
+- `src/tgbot/ops/api/routes/broadcast.py`
+- `src/tgbot/lake/manifest.py`
 ## Change Log
 
 - 2026-01-12: Created implementation story file from planning artifacts (bulk yolo create-story).
+- 2026-01-12: Story hygiene pass (normalized planning-story paths, filled agent-model placeholder, removed redundant bottom status block).
 
-## Status
+## Senior Developer Review (AI)
 
-done
+_Reviewer: AI on 2026-01-12_
+
+### Synthetic File List Basis
+
+- Git diff is empty; the File List below was generated from a deterministic static keyword scan plus known module/story mappings.
+
+### Findings
+
+- **HIGH**: Story is `Status: done` but Tasks/Subtasks are all unchecked; status likely overstates completion and makes audits unreliable.
+- **MEDIUM**: No git diff/commit context available; this review is based on static inspection and may miss what actually changed per story.
+- **MEDIUM**: Dev Agent Record has no completion notes, debug refs, or rationale tying code to each Acceptance Criterion.
+
+### Outcome
+
+Changes Requested
+

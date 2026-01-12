@@ -30,7 +30,7 @@ so that I can decide without reading the whole chat.
 ## Dev Notes
 
 - **Sources**:
-  - Planning story: `/Users/Kuldeep_Desai/workspace/exp/tgbot/project_management/planning-artifacts/stories/epic-03/story-03-08-handle-conflicting-recommendations-neutrally-with-evidence.md`
+  - Planning story: `project_management/planning-artifacts/stories/epic-03/story-03-08-handle-conflicting-recommendations-neutrally-with-evidence.md`
   - Epics: `project_management/planning-artifacts/epics.md`
   - Architecture: `project_management/planning-artifacts/architecture.md`
 - **Cross-cutting guardrails (from architecture/epics)**:
@@ -49,7 +49,7 @@ so that I can decide without reading the whole chat.
 
 ### Agent Model Used
 
-{{agent_model_name_version}}
+N/A (bulk create-story; model not recorded)
 
 ### Debug Log References
 
@@ -57,10 +57,41 @@ so that I can decide without reading the whole chat.
 
 ### File List
 
+- `src/tgbot/query/recommendations.py`
+- `src/tgbot/telegram/ui/answer_format.py`
+- `src/tgbot/telegram/handlers/query.py`
+- `src/tgbot/query/service.py`
+- `src/tgbot/telegram/updates/receiver_polling.py`
+- `src/tgbot/logging/logger.py`
+- `tests/unit/test_channel_isolation_filters.py`
+- `src/tgbot/storage/models/answers.py`
+- `src/tgbot/storage/repos/answers_repo.py`
+- `src/tgbot/telegram/handlers/callbacks_more_recs.py`
+- `migrations/versions/0001_initial_schema.py`
+- `src/tgbot/config/settings.py`
+- `src/tgbot/ingestion/queue/local_queue.py`
+- `src/tgbot/main/receiver.py`
+- `src/tgbot/telegram/ui/keyboards.py`
 ## Change Log
 
 - 2026-01-12: Created implementation story file from planning artifacts (bulk yolo create-story).
+- 2026-01-12: Story hygiene pass (normalized planning-story paths, filled agent-model placeholder, removed redundant bottom status block).
 
-## Status
+## Senior Developer Review (AI)
 
-done
+_Reviewer: AI on 2026-01-12_
+
+### Synthetic File List Basis
+
+- Git diff is empty; the File List below was generated from a deterministic static keyword scan plus known module/story mappings.
+
+### Findings
+
+- **HIGH**: Story is `Status: done` but Tasks/Subtasks are all unchecked; status likely overstates completion and makes audits unreliable.
+- **MEDIUM**: No git diff/commit context available; this review is based on static inspection and may miss what actually changed per story.
+- **MEDIUM**: Dev Agent Record has no completion notes, debug refs, or rationale tying code to each Acceptance Criterion.
+
+### Outcome
+
+Changes Requested
+

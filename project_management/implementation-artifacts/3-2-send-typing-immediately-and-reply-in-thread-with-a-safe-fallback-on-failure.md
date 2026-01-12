@@ -45,7 +45,7 @@ so that the experience feels responsive and reliable.
 ## Dev Notes
 
 - **Sources**:
-  - Planning story: `/Users/Kuldeep_Desai/workspace/exp/tgbot/project_management/planning-artifacts/stories/epic-03/story-03-02-send-typing-immediately-and-reply-in-thread-with-a-safe-fallback-on-failure.md`
+  - Planning story: `project_management/planning-artifacts/stories/epic-03/story-03-02-send-typing-immediately-and-reply-in-thread-with-a-safe-fallback-on-failure.md`
   - Epics: `project_management/planning-artifacts/epics.md`
   - Architecture: `project_management/planning-artifacts/architecture.md`
 - **Cross-cutting guardrails (from architecture/epics)**:
@@ -64,7 +64,7 @@ so that the experience feels responsive and reliable.
 
 ### Agent Model Used
 
-{{agent_model_name_version}}
+N/A (bulk create-story; model not recorded)
 
 ### Debug Log References
 
@@ -72,10 +72,42 @@ so that the experience feels responsive and reliable.
 
 ### File List
 
+- `src/tgbot/telegram/updates/receiver_polling.py`
+- `src/tgbot/telegram/handlers/query.py`
+- `src/tgbot/ops/cli/main.py`
+- `src/tgbot/telegram/updates/normalization.py`
+- `migrations/versions/0001_initial_schema.py`
+- `src/tgbot/ops/api/routes/broadcast.py`
+- `src/tgbot/storage/repos/answers_repo.py`
+- `src/tgbot/storage/repos/channels_repo.py`
+- `src/tgbot/telegram/handlers/help.py`
+- `src/tgbot/userbot/backfill.py`
+- `src/tgbot/worker/file_processor.py`
+- `src/tgbot/telegram/handlers/feedback.py`
+- `src/tgbot/telegram/ui/answer_format.py`
+- `src/tgbot/storage/models/answers.py`
+- `src/tgbot/ingestion/schema/event_envelope.py`
 ## Change Log
 
 - 2026-01-12: Created implementation story file from planning artifacts (bulk yolo create-story).
+- 2026-01-12: Story hygiene pass (normalized planning-story paths, filled agent-model placeholder, removed redundant bottom status block).
 
-## Status
+## Senior Developer Review (AI)
 
-done
+_Reviewer: AI on 2026-01-12_
+
+### Synthetic File List Basis
+
+- Git diff is empty; the File List below was generated from a deterministic static keyword scan plus known module/story mappings.
+
+### Findings
+
+- **HIGH**: Story is `Status: done` but Tasks/Subtasks are all unchecked; status likely overstates completion and makes audits unreliable.
+- **MEDIUM**: No git diff/commit context available; this review is based on static inspection and may miss what actually changed per story.
+- **MEDIUM**: Dev Agent Record has no completion notes, debug refs, or rationale tying code to each Acceptance Criterion.
+- **LOW**: Typing action is implemented in the polling receiver; verify it’s triggered for both mention and reply-to-bot paths and not for ignored messages.
+
+### Outcome
+
+Changes Requested
+
